@@ -19,5 +19,6 @@ public interface IUserDao {
 	//4. 查询  find select
 	User selectUserById(Long id);
 	User selectUserByName(String name);
+	User selectUserByNameAndPassword(String name, String password);
 	List<User> selectAllUser();
 }

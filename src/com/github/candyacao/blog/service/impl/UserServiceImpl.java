@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.github.candyacao.blog.bean.User;
+import com.github.candyacao.blog.dao.IUserDao;
 import com.github.candyacao.blog.dao.impl.UserDaoImpl;
 import com.github.candyacao.blog.service.IUserService;
 
@@ -16,7 +17,7 @@ public class UserServiceImpl implements IUserService{
 	    //业务逻辑  注册用户
 		//判断用户名是否被占用  需要借助于dao层
 		//构建一个dao层实例
-		UserDaoImpl daoImpl = new UserDaoImpl();
+		IUserDao daoImpl = new UserDaoImpl();
 		//调用对应方法
 		User user2 = daoImpl.selectUserByName(user.getName());
 		System.out.println("aaaaaaaaaaaaaaaaa");
@@ -39,7 +40,7 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public User loginUser(User user) {
-		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		IUserDao userDaoImpl = new UserDaoImpl();
 		User user1 = userDaoImpl.selectUserByNameAndPassword(user.getName(), user.getPassword());
 		return user1;
 	}

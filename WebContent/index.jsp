@@ -8,6 +8,6 @@
 <title>welcome</title>
 </head>
 <body>
-    欢迎<%=((User)session.getAttribute("user")).getName()登录%>
+    欢迎<%=((User)session.getAttribute("user")).getName()%>登录
 </body>
 </html>

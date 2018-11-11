@@ -15,17 +15,28 @@ public class UserDaoImpl implements IUserDao{
 	@Override
 	public void saveUser(User user) {
 		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
 		try {
 			connection = ConnectionFactory.getConnection();
-			String sql = "insert into b_user(id,username,password,password2,gender) values(b_user_seq.nextval,?,?,?,?)";
-			PreparedStatement pstmt = connection.prepareStatement(sql);
+			String sql = "insert into b_user(id,username,password,gender) values(b_user_seq.nextval,?,?,?)";
+			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getPassword());
-			pstmt.setString(3, user.getPassword2());
-			pstmt.setString(4, user.getGender());
-			pstmt.executeUpdate();
+			pstmt.setString(3, user.getGender());
+			pstmt.execute();
+//			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
@@ -61,7 +72,7 @@ public class UserDaoImpl implements IUserDao{
 			while (resultSet.next()) {
 				User user = new User(resultSet.getLong(1),
 						resultSet.getString(2), resultSet.getString(3),
-						resultSet.getString(4), resultSet.getString(5));	
+						resultSet.getString(4));	
 				return user;
 			}
 		} catch (SQLException e) {
@@ -96,11 +107,12 @@ public class UserDaoImpl implements IUserDao{
 			pstmt.setString(1, name);
 			pstmt.setString(2, password);
 			resultSet = pstmt.executeQuery();
-			System.out.println(resultSet.wasNull());
+			
 			while (resultSet.next()) {
 				User user = new User(resultSet.getLong(1),
 						resultSet.getString(2), resultSet.getString(3),
-						resultSet.getString(4), resultSet.getString(5));
+						resultSet.getString(4));
+				System.out.println(resultSet.wasNull());
 				return user;
 			}
 		} catch (SQLException e) {

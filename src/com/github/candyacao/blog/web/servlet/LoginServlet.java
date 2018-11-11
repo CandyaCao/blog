@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.github.candyacao.blog.bean.User;
+import com.github.candyacao.blog.service.IUserService;
 import com.github.candyacao.blog.service.impl.UserServiceImpl;
 
 
@@ -25,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		User user = new User(username, password);
 		System.out.println("data from form "+user);
-		UserServiceImpl userServiceImpl = new UserServiceImpl();
+		IUserService userServiceImpl = new UserServiceImpl();
 		User user2 = userServiceImpl.loginUser(user);
 		System.out.println("will login user " + user2);
 		if (user2!=null) {

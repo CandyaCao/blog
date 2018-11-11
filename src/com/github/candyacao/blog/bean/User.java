@@ -1,10 +1,9 @@
 package com.github.candyacao.blog.bean;
 
 public class User {
-	private Long id;
+	private long id;
 	private String name;
 	private String password;
-	private String password2;
 	private String gender;
 	
 	public User() {}
@@ -14,19 +13,18 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Long id, String name, String password, String password2, String gender) {
+	public User(long id, String name, String password, String gender) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.password2 = password2;
 		this.gender = gender;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -46,14 +44,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getPassword2() {
-		return password2;
-	}
-
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
-
 	public String getGender() {
 		return gender;
 	}
@@ -64,8 +54,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + name + ", password=" + password + ", password2=" + password2
-				+ ", gender=" + gender + "]";
+		return "User [id=" + id + ", username=" + name + ", password=" + password +  ", gender=" + gender + "]";
 	}
 		
 }

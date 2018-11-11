@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.github.candyacao.blog.bean.User;
+import com.github.candyacao.blog.service.IUserService;
 import com.github.candyacao.blog.service.impl.UserServiceImpl;
 
 
@@ -28,12 +29,11 @@ public class RegisterServlet extends HttpServlet {
 		User user = new User();
 		user.setName(name);
 		user.setPassword(password);
-		user.setPassword2(request.getParameter("password2"));
 		user.setGender(request.getParameter("gender"));
 		System.out.println("user from  form"  +user);
 		//2. 调用service层方法
 		System.out.println("调用service层方法");
-		UserServiceImpl serviceImpl = new UserServiceImpl();
+		IUserService serviceImpl = new UserServiceImpl();
 		boolean flag = serviceImpl.registerUser(user);
 		System.out.println(flag);
 		//3.做出响应

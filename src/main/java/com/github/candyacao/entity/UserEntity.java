@@ -7,7 +7,7 @@ import com.github.candyacao.enums.UserSexEnum;
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private String id;
 	private String userName;
 	private String passWord;
 	private UserSexEnum userSex;
@@ -17,18 +17,19 @@ public class UserEntity implements Serializable {
 		super();
 	}
 
-	public UserEntity(String userName, String passWord, UserSexEnum userSex) {
-		super();
-		this.passWord = passWord;
+	public UserEntity(String id, String userName, String passWord, UserSexEnum userSex, String nickName) {
+		this.id = id;
 		this.userName = userName;
+		this.passWord = passWord;
 		this.userSex = userSex;
+		this.nickName = nickName;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -66,8 +67,12 @@ public class UserEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "userName " + this.userName + ", pasword " + this.passWord + "sex " + userSex.name();
+		return "UserEntity{" +
+				"id='" + id + '\'' +
+				", userName='" + userName + '\'' +
+				", passWord='" + passWord + '\'' +
+				", userSex=" + userSex +
+				", nickName='" + nickName + '\'' +
+				'}';
 	}
-
 }

@@ -8,12 +8,12 @@ public interface UserMapper {
 	
 	List<UserEntity> getAll();
 	
-	UserEntity getOne(Long id);
+	UserEntity getOne(String id);
 
 	void insert(UserEntity user);
 
 	void update(UserEntity user);
 
-	void delete(Long id);
+	void delete(String id);
 
 }

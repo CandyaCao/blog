@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserEntity signin(Long id) {
+    public UserEntity signin(String id) {
         return userMapper.getOne(id);
     }
 }

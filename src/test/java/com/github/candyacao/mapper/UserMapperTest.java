@@ -3,6 +3,7 @@ package com.github.candyacao.mapper;
 import java.util.List;
 
 import com.github.candyacao.entity.UserEntity;
+import com.github.candyacao.utils.Misc;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,9 +22,9 @@ public class UserMapperTest {
 
 	@Test
 	public void testInsert() throws Exception {
-		UserMapper.insert(new UserEntity("aa", "a123456", UserSexEnum.MAN));
-		UserMapper.insert(new UserEntity("bb", "b123456", UserSexEnum.WOMAN));
-		UserMapper.insert(new UserEntity("cc", "b123456", UserSexEnum.WOMAN));
+		UserMapper.insert(new UserEntity(Misc.UUID(), "aa", "a123456", UserSexEnum.MAN, "张三"));
+		UserMapper.insert(new UserEntity(Misc.UUID(), "bb", "b123456", UserSexEnum.WOMAN, "张海飞"));
+		UserMapper.insert(new UserEntity(Misc.UUID(), "cc", "b123456", UserSexEnum.WOMAN, "李四"));
 
 		Assert.assertEquals(3, UserMapper.getAll().size());
 	}
@@ -41,11 +42,11 @@ public class UserMapperTest {
 	
 	@Test
 	public void testUpdate() throws Exception {
-		UserEntity user = UserMapper.getOne(6l);
+		UserEntity user = UserMapper.getOne("hjkh");
 		System.out.println(user.toString());
 		user.setNickName("neo");
 		UserMapper.update(user);
-		Assert.assertTrue(("neo".equals(UserMapper.getOne(6l).getNickName())));
+		Assert.assertTrue(("neo".equals(UserMapper.getOne("hjkh").getNickName())));
 	}
 
 }

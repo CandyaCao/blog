@@ -13,10 +13,14 @@ public class PostEntity {
     private String photoLink;
     private Date createDate;
     private List<CommentEntity> comments;
+    private List<TagEntity> tags;
 
-    public PostEntity() {}
+    public PostEntity() {
+    }
 
-    public PostEntity(String id) { this.id = id;}
+    public PostEntity(String id) {
+        this.id = id;
+    }
 
     public PostEntity(String id, String content, String authorID, String title, String summary, String photoLink, Date createDate) {
         this.id = id;
@@ -90,6 +94,14 @@ public class PostEntity {
 
     public void setComments(List<CommentEntity> comments) {
         this.comments = comments;
+    }
+
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
     }
 
     @Override

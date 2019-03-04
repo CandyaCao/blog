@@ -2,9 +2,11 @@ package com.github.candyacao.web;
 
 import com.github.candyacao.config.Config;
 import com.github.candyacao.entity.PostEntity;
+import com.github.candyacao.entity.TagEntity;
 import com.github.candyacao.entity.UserEntity;
 import com.github.candyacao.mapper.PostMapper;
 import com.github.candyacao.service.PostService;
+import com.github.candyacao.service.TagService;
 import com.github.candyacao.utils.Misc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,9 @@ import java.util.Date;
 @RestController
 public class PostController {
     @Autowired
-    private PostMapper postMapper;
-    @Autowired
     private PostService postService;
+    @Autowired
+    private TagService tagService;
 
     @RequestMapping(value = "/publish", method = {RequestMethod.POST, RequestMethod.GET})
     public String publish(HttpServletRequest request, PostEntity post) {

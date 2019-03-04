@@ -124,7 +124,7 @@
                     post.content       AS post_content,
                     post.photoLink     AS post_photoLink,
                     post.createDate    AS post_createDate,
-                    post.authorID      AS post_author
+                    post.authorID      AS post_authorID
                 FROM
                     post
                         LEFT OUTER JOIN COMMENT ON COMMENT.postID = post.id

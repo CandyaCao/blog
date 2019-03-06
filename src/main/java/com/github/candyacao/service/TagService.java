@@ -8,6 +8,7 @@ import java.util.List;
 public interface TagService {
     int insert(TagEntity tag);
     int linkToPost(@Param("tag_id") String tag_id, @Param("post_id") String post_id);
+    TagEntity selectByName(String name);
     List<TagEntity> getTags();
     List<TagEntity> getTagsByPostID(String postID);
 }

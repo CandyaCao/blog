@@ -18,4 +18,7 @@
         select tag.* from tag,post_tag
           where tag.id=post_tag.tag_id and post_tag.post_id=#{postID}
     </select>
+    <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from tag where name=#{name}
+    </select>
 </mapper>

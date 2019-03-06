@@ -6,6 +6,8 @@ import com.github.candyacao.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostServiceImpl implements PostService {
     @Autowired
@@ -23,5 +25,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public void delete(String id) {
         postMapper.delete(id);
+    }
+
+    @Override
+    public List<PostEntity> getPosts(String userID) {
+        return postMapper.getAllPosts(userID);
     }
 }

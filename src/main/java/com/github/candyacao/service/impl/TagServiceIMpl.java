@@ -22,6 +22,11 @@ public class TagServiceIMpl implements TagService {
     }
 
     @Override
+    public TagEntity selectByName(String name) {
+        return tagMapper.selectByName(name);
+    }
+
+    @Override
     public List<TagEntity> getTags() {
         return tagMapper.getTags();
     }

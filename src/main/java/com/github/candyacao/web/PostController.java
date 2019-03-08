@@ -60,7 +60,7 @@ public class PostController {
      * @param request
      * @return
      */
-    @RequestMapping(value="/post" method = {RequestMethod.POST, RequestMethod.GET)
+    @RequestMapping(value="/post", method = {RequestMethod.POST, RequestMethod.GET})
     public List<PostEntity> getPosts(HttpServletRequest request){
         UserEntity me = (UserEntity) request.getSession().getAttribute(Config.SESSION_LOGINED_KEY);
         return postService.getPosts(me.getId());

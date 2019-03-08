@@ -3,7 +3,6 @@ package com.github.candyacao.mapper;
 import com.github.candyacao.entity.CommentEntity;
 import com.github.candyacao.entity.UserEntity;
 import com.github.candyacao.utils.Misc;
-import org.apache.catalina.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

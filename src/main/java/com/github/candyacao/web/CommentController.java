@@ -20,7 +20,7 @@ public class CommentController {
 
     @RequestMapping(value = "/postComment", method = {RequestMethod.POST, RequestMethod.GET})
     public String addComment(HttpServletRequest request, String postID, CommentEntity comment){
-        String msg = "评论发表失败！"
+        String msg = "评论发表失败！";
         UserEntity me = (UserEntity)request.getSession().getAttribute(Config.SESSION_LOGINED_KEY);
         if (postID != null && !postID.equals("")){
             comment.setId(Misc.UUID());

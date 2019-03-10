@@ -1,16 +1,40 @@
 package com.github.candyacao.entity;
 
-public class FileEntity {
-    String id;
-    String name;
-    String path;
+import com.github.candyacao.config.Config;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-    public FileEntity() {}
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class FileEntity {
+    private String id;
+    private String name;
+    // 不包含basepath的路径部分
+    private String path;
+
+    public FileEntity() {
+    }
 
     public FileEntity(String id, String name, String path) {
         this.id = id;
         this.name = name;
         this.path = path;
+    }
+
+    // 很丑的不序列化 getInputStream 的方式
+    public InputStream InputStream() {
+        Path path = Paths.get(Config.BASEPATH, this.path);
+        InputStream is = null;
+        try {
+            is = new FileInputStream(path.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return is;
     }
 
     public String getId() {

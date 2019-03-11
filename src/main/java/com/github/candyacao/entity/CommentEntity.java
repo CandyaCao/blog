@@ -1,8 +1,11 @@
 package com.github.candyacao.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CommentEntity {
+public class CommentEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String id;
     private Date createDate;
     private String content;

@@ -1,9 +1,12 @@
 package com.github.candyacao.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class PostEntity {
+public class PostEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String id;
     private String content;
     private String authorID;

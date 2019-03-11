@@ -17,36 +17,40 @@ import com.github.candyacao.enums.UserSexEnum;
 @SpringBootTest
 public class UserMapperTest {
 
-	@Autowired
-	private UserMapper UserMapper;
+    @Autowired
+    private UserMapper UserMapper;
 
-	@Test
-	public void testInsert() throws Exception {
-		UserMapper.insert(new UserEntity(Misc.UUID(), "aa", "a123456", UserSexEnum.MAN, "张三"));
-		UserMapper.insert(new UserEntity(Misc.UUID(), "bb", "b123456", UserSexEnum.WOMAN, "张海飞"));
-		UserMapper.insert(new UserEntity(Misc.UUID(), "cc", "b123456", UserSexEnum.WOMAN, "李四"));
+    @Test
+    public void testInsert() throws Exception {
+        UserMapper.insert(new UserEntity(Misc.UUID(), "aa", "a123456", UserSexEnum.MAN, "张三"));
+        UserMapper.insert(new UserEntity(Misc.UUID(), "bb", "b123456", UserSexEnum.WOMAN, "张海飞"));
+        UserMapper.insert(new UserEntity(Misc.UUID(), "cc", "b123456", UserSexEnum.WOMAN, "李四"));
 
-		Assert.assertEquals(3, UserMapper.getAll().size());
-	}
+        Assert.assertEquals(3, UserMapper.getAll().size());
+    }
 
-	@Test
-	public void testQuery() throws Exception {
-		List<UserEntity> users = UserMapper.getAll();
-		if(users==null || users.size()==0){
-			System.out.println("is null");
-		}else{
-			System.out.println(users.toString());
-		}
-	}
-	
-	
-	@Test
-	public void testUpdate() throws Exception {
-		UserEntity user = UserMapper.getOne("hjkh");
-		System.out.println(user.toString());
-		user.setNickName("neo");
-		UserMapper.update(user);
-		Assert.assertTrue(("neo".equals(UserMapper.getOne("hjkh").getNickName())));
-	}
+    @Test
+    public void testQuery() throws Exception {
+        List<UserEntity> users = UserMapper.getAll();
+        if (users == null || users.size() == 0) {
+            System.out.println("is null");
+        } else {
+            System.out.println(users.toString());
+        }
+    }
 
+
+    @Test
+    public void testUpdate() throws Exception {
+        UserEntity user = UserMapper.getOne("hjkh");
+        System.out.println(user.toString());
+        user.setNickName("neo");
+        UserMapper.update(user);
+        Assert.assertTrue(("neo".equals(UserMapper.getOne("hjkh").getNickName())));
+    }
+
+    @Test
+    public void testGetOne() {
+        UserEntity one = UserMapper.getOne("");
+    }
 }

@@ -8,6 +8,7 @@ import com.github.candyacao.service.PostService;
 import com.github.candyacao.service.TagService;
 import com.github.candyacao.utils.Misc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,6 +61,7 @@ public class PostController {
      * @param request
      * @return
      */
+    @Cacheable(value="post-key")
     @RequestMapping(value="/post", method = {RequestMethod.POST, RequestMethod.GET})
     public List<PostEntity> getPosts(HttpServletRequest request){
         UserEntity me = (UserEntity) request.getSession().getAttribute(Config.SESSION_LOGINED_KEY);

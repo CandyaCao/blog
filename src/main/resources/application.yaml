@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8
+    username: root
+  redis:
+    password:
+    database: 0
+    port: 6379
+    pool:
+      max-idle: 10
+      min-idle: 0
+      max-active: 200
+      max-wait: -1
+    host: localhost
+    timeout: 1000
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-locations: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.github.candyacao.entity
+
+logging:
+  level:
+    com.github.candyacao.mapper: DEBUG

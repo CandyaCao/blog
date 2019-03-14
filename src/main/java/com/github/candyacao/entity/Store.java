@@ -1,27 +1,31 @@
 package com.github.candyacao.entity;
 
-import com.github.candyacao.enums.LikedStatusEnum;
-
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * 点赞功能
+ * 收藏功能
  */
-public class PostLike implements Serializable {
+public class Store implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String id;
     private String userID;
     private String postID;
-    private Integer status = LikedStatusEnum.UNLIKE.getCode();
+    private Date date;
 
-    public PostLike() {
+    public Store() {}
+
+    public Store(String userID, String postID) {
+        this.userID = userID;
+        this.postID = postID;
     }
 
-    public PostLike(String id, String userID, String postID) {
+    public Store(String id, String userID, String postID, Date date) {
         this.id = id;
         this.userID = userID;
         this.postID = postID;
+        this.date = date;
     }
 
     public String getId() {
@@ -48,11 +52,21 @@ public class PostLike implements Serializable {
         this.postID = postID;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Date getDate() {
+        return date;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "id='" + id + '\'' +
+                ", userID='" + userID + '\'' +
+                ", postID='" + postID + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

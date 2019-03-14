@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.candyacao.mapper.RelationShipMapper">
+    <resultMap id="BaseResultMap" type="RelationShip">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="fromUserID" property="fromUserID" jdbcType="VARCHAR"/>
+        <result column="toUserID" property="toUserID" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        ,
+        fromUserID,
+        toUserID
+    </sql>
+    <insert id="saveFan" parameterType="RelationShip">
+        insert into RelationShip(id, fromUserID, toUserID)
+        values (#{id}, #{fromUserID}, #{toUserID})
+    </insert>
+    <delete id="delFan" parameterType="RelationShip">
+        delete
+        from RelationShip
+        where fromUserID = #{fromUserID}
+          and toUserID = #{toUserID}
+    </delete>
+    <select id="getFans" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RelationShip
+        where toUserID=#{toUserID,jdbcType=VARCHAR}
+    </select>
+    <select id="getFollows" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RelationShip
+        where fromUserID=#{fromUserID,jdbcType=VARCHAR}
+    </select>
+</mapper>

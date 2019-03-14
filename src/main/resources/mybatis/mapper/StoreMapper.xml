@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.candyacao.mapper.StoreMapper">
+    <resultMap id="BaseResultMap" type="com.github.candyacao.entity.Store">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="userID" property="userID" jdbcType="VARCHAR"/>
+        <result column="postID" property="postID" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="DATE"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        ,
+        userID,
+        postID,
+        date
+    </sql>
+    <insert id="saveStore" parameterType="Store">
+        insert into store(id, userID, postID,date)
+        values (#{id}, #{userID}, #{postID}, #{date})
+    </insert>
+    <delete id="delStore" parameterType="com.github.candyacao.entity.Store">
+        delete
+        from store
+        where userID = #{userID}
+          and postID = #{postID}
+    </delete>
+    <select id="getStores" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from store
+        where userID=#{userID,jdbcType=VARCHAR}
+    </select>
+</mapper>
